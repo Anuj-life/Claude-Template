@@ -44,10 +44,16 @@ const { title, description = "Hindi Christian song lyrics" } = Astro.props;
   </noscript>
 
   <header>
-    <nav>
-      <a href="/" class="site-title">Hindi Christian Song</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="/" class="site-title">Hindi Christian Song</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about/">About Us</a>
+      <a href="/contact/">Contact Us</a>
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </div>
+  </nav>
+</header>
 
   <main>
     <slot />
