@@ -8,6 +8,7 @@ const songs = defineCollection({
     title: z.string(),
     singer: z.string().optional(),
     category: z.string().optional(),
+    tags: z.array(z.string()).optional(),
     date: z.coerce.date().optional(),
     description: z.string().optional(),
   }),

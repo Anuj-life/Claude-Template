@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const allSongs = await getCollection('songs');
+  const categories = [...new Set(allSongs.map((s) => s.data.category).filter(Boolean))];
+
+  return categories.map((category) => ({
+    params: { category: category.toLowerCase() },
+    props: {
+      songs: allSongs.filter((s) => s.data.category === category),
+      categoryName: category,
+    },
+  }));
+}
+
+const { songs, categoryName } = Astro.props;
+---
+<Layout title={`Category: ${categoryName}`}>
+  <h1>Category: {categoryName}</h1>
+  <ul class="song-list">
+    {songs.map((song) => (
+      <li><a href={`/${song.id}/`}>{song.data.title}</a></li>
+    ))}
+  </ul>
+  <p><a href="/">&larr; Back to all songs</a></p>
+</Layout>

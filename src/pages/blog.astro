@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const allSongs = await getCollection('songs');
+const sorted = allSongs.sort((a, b) => (a.data.title > b.data.title ? 1 : -1));
+---
+<Layout title="All Songs">
+  <h1>All Songs</h1>
+  <ul class="song-list">
+    {sorted.map((song) => (
+      <li>
+        <a href={`/${song.id}/`}>{song.data.title}</a>
+        {song.data.singer && <span class="singer"> — {song.data.singer}</span>}
+      </li>
+    ))}
+  </ul>
+</Layout>

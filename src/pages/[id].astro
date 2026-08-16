@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro';
 
 // This runs once at build time and creates one real HTML page per song
 export async function getStaticPaths() {
@@ -16,11 +16,23 @@ const { Content } = await render(song);
 ---
 <Layout title={song.data.title} description={song.data.description}>
   <article>
-    <h1>{song.data.title}</h1>
-    {song.data.singer && <p class="meta">Singer: {song.data.singer}</p>}
-    <div class="lyrics">
-      <Content />
+  <h1>{song.data.title}</h1>
+  {song.data.singer && <p class="meta">Singer: {song.data.singer}</p>}
+  {song.data.category && (
+    <p class="meta">
+      Category: <a href={`/category/${song.data.category.toLowerCase()}/`}>{song.data.category}</a>
+    </p>
+  )}
+  {song.data.tags && song.data.tags.length > 0 && (
+    <div class="tags">
+      {song.data.tags.map((tag) => (
+        <a href={`/tag/${tag.toLowerCase()}/`} class="tag">{tag}</a>
+      ))}
     </div>
-  </article>
+  )}
+  <div class="lyrics">
+    <Content />
+  </div>
+</article>
   <p><a href="/">&larr; Back to all songs</a></p>
 </Layout>

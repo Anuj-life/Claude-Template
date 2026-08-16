@@ -8,13 +8,12 @@ const allSongs = await getCollection('songs');
 const sorted = allSongs.sort((a, b) => (a.data.title > b.data.title ? 1 : -1));
 ---
 <Layout title="Home">
-  <h1>Hindi Christian Songs</h1>
-  <ul class="song-list">
-    {sorted.map((song) => (
-      <li>
-        <a href={`/songs/${song.id}/`}>{song.data.title}</a>
-        {song.data.singer && <span class="singer"> — {song.data.singer}</span>}
-      </li>
-    ))}
-  </ul>
+  <h1>Welcome to Hindi Christian Song</h1>
+  <p>
+    A collection of Hindi Christian bhajans and worship song lyrics —
+    made to help you sing and worship in your own language.
+  </p>
+  <p>
+    <a href="/blog/" class="cta-button">Browse All Songs</a>
+  </p>
 </Layout>

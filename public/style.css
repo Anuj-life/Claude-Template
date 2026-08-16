@@ -83,3 +83,41 @@ footer {
   color: #999;
   font-size: 0.85rem;
 }
+
+
+/ *This is tag code */
+.tags {
+  margin: 0.5rem 0 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #eef4ee;
+  color: #2b4d2b;
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: #2b4d2b;
+  color: white;
+}
+
+/ *This is home page (optional)*/
+.cta-button {
+  display: inline-block;
+  background: #2b4d2b;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background: #1e381e;
+}
