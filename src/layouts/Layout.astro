@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Hindi Christian song lyrics" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | Hindi Christian Song</title>
+
+  <!--
+    ====== GOOGLE TAG MANAGER (head snippet) ======
+    Replace GTM-XXXXXXX with your real GTM ID from tagmanager.google.com
+    Delete this comment block once you've added your real ID.
+  -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');
+  </script>
+
+  <!--
+    ====== GOOGLE ADSENSE ======
+    Replace ca-pub-XXXXXXXXXXXXXXXX with your real AdSense publisher ID
+    from adsense.google.com. Keep this until you're approved, or remove it.
+  -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- GOOGLE TAG MANAGER (body snippet, must be right after <body>) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <header>
+    <nav>
+      <a href="/" class="site-title">Hindi Christian Song</a>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <p>&copy; {new Date().getFullYear()} Hindi Christian Song</p>
+  </footer>
+</body>
+</html>

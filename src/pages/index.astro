@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// This automatically pulls in EVERY .md file from src/content/songs
+// You never need to edit this file when you add a new song.
+const allSongs = await getCollection('songs');
+const sorted = allSongs.sort((a, b) => (a.data.title > b.data.title ? 1 : -1));
+---
+<Layout title="Home">
+  <h1>Hindi Christian Songs</h1>
+  <ul class="song-list">
+    {sorted.map((song) => (
+      <li>
+        <a href={`/songs/${song.id}/`}>{song.data.title}</a>
+        {song.data.singer && <span class="singer"> — {song.data.singer}</span>}
+      </li>
+    ))}
+  </ul>
+</Layout>
